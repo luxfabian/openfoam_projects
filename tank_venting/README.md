@@ -2,9 +2,7 @@
 
 ## Requirements
 
-- `gmesh-4.8.4`
-- Docker image `openfoamplus/of_v2012_centos73:release`
-- `ParaView-5.9.1`
+- Docker image `openfoam` -> see ./docker
 
 ## Meshing
 

@@ -50,7 +50,9 @@ def write_gmsh_file(
 
 def run_gmsh():
     
-    subprocess.run(["gmsh", "tank.geo", "-3", "-save"])
+    subprocess.run(["gmsh", "tank.geo", "-"])
+    subprocess.run(["gmshToFoam", "tank.msh"])
+    subprocess.run(["checkMesh"])
 
 if __name__=='__main__':
 

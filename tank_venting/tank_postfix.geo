@@ -38,4 +38,11 @@ Physical Surface("inlet") = {6};
 Physical Surface("outlet") = {7};
 
 
+//---------------------------------------------------------------------
+// Create & save mesh
+//---------------------------------------------------------------------
 
+Mesh 3;
+OptimizeMesh "Gmsh";
+Mesh.MshFileVersion = 2.0;
+Save "tank.msh";
