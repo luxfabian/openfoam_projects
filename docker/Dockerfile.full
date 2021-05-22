@@ -18,7 +18,8 @@ RUN apt-get -y install openfoam7
 
 RUN apt-get -y install python3 python3-pip
 RUN pip3 install numpy 
-RUN pip3 install --upgrade gmsh
+RUN pip3 install gmsh
+ENV PYTHONPATH=/usr/local/lib/python3.8/site-packages/gmsh-4.8.3-Linux64-sdk/lib/
 
 RUN groupadd -g $GID -o $UNAME && useradd -m -u $UID -g $GID -o -s /bin/bash $UNAME
 
