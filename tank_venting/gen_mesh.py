@@ -1,9 +1,7 @@
 import numpy as np
-import os
+
 import subprocess
 
-
-GMSH_PATH = os.environ.get('GMSH_PATH')
 
 #---------------------------------------------------------------------
 # read template
@@ -51,11 +49,8 @@ def write_gmsh_file(
     gmesh_file.close()
 
 def run_gmsh():
-    if GMSH_PATH != None:
-        #generate mesh
-        subprocess.run([GMSH_PATH, "tank.geo", "-3", "-save"])
-    else:
-        raise ValueError("Environment variable GMSH_PATH not set")
+    
+    subprocess.run(["gmsh", "tank.geo", "-3", "-save"])
 
 if __name__=='__main__':
 
