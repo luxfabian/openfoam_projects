@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,macos,openfoam
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,macos,openfoam
 
+#special files
+tank.geo
+
 ### macOS ###
 # General
 .DS_Store
