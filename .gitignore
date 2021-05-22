@@ -4,6 +4,8 @@
 
 #special files
 tank.geo
+*.msh
+tank_venting/constant/polyMesh/*
 
 ### macOS ###
 # General
