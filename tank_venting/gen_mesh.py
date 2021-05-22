@@ -48,6 +48,46 @@ def write_gmsh_file(
 
     gmesh_file.close()
 
+def fix_boundaries():
+
+    boundary_file = open("./constant/polyMesh/boundary", "r")
+
+    boundary = boundary_file.read()
+
+    s = "(\n    tank_cylinder_wall\n    {\n        type            patch;\n        physicalType    patch;"
+    r = "(\n    tank_cylinder_wall\n    {\n        type            wall;"
+    boundary = boundary.replace(s,r)
+
+    s = "    tank_top_wall\n    {\n        type            patch;\n        physicalType    patch;"
+    r = "    tank_top_wall\n    {\n        type            wall;"
+    boundary = boundary.replace(s,r)
+
+    s = "    tank_bottom_wall\n    {\n        type            patch;\n        physicalType    patch;"
+    r = "    tank_bottom_wall\n    {\n        type            wall;"
+    boundary = boundary.replace(s,r)
+
+    s = "    inlet_wall\n    {\n        type            patch;\n        physicalType    patch;"
+    r = "    inlet_wall\n    {\n        type            wall;"
+    boundary = boundary.replace(s,r)
+
+    s = "    outlet_wall\n    {\n        type            patch;\n        physicalType    patch;"
+    r = "    outlet_wall\n    {\n        type            wall;"
+    boundary = boundary.replace(s,r)
+
+    s = "    inlet\n    {\n        type            patch;\n        physicalType    patch;"
+    r = "    inlet\n    {\n        type            patch;"
+    boundary = boundary.replace(s,r)
+
+    s = "    outlet\n    {\n        type            patch;\n        physicalType    patch;"
+    r = "    outlet\n    {\n        type            patch;"
+    boundary = boundary.replace(s,r)
+
+    boundary_file.close()
+    boundary_file = open("./constant/polyMesh/boundary", "w")
+    boundary_file.write(boundary)
+    boundary_file.close()
+
+
 def run_gmsh():
     
     subprocess.run(["gmsh", "tank.geo", "-"])
@@ -58,6 +98,7 @@ if __name__=='__main__':
 
     write_gmsh_file()
     run_gmsh()
+    fix_boundaries()
 
         
 
