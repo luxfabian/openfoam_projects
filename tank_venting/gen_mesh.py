@@ -1,4 +1,9 @@
 import numpy as np
+import os
+import subprocess
+
+
+GMSH_PATH = os.environ.get('GMSH_PATH')
 
 #---------------------------------------------------------------------
 # read template
@@ -18,7 +23,7 @@ postfix_file.close()
 # write gmesh files
 #---------------------------------------------------------------------
 
-def write_gmesh(
+def write_gmsh_file(
                     tank_diameter=1000, tank_height=500, 
                     outlet_diameter=100, outlet_height=200,
                     inlet_diameter=100, inlet_height=200, 
@@ -45,28 +50,18 @@ def write_gmesh(
 
     gmesh_file.close()
 
+def run_gmsh():
+    if GMSH_PATH != None:
+        #generate mesh
+        subprocess.run([GMSH_PATH, "tank.geo", "-3", "-save"])
+    else:
+        raise ValueError("Environment variable GMSH_PATH not set")
 
 if __name__=='__main__':
 
-    write_gmesh()
+    write_gmsh_file()
+    run_gmsh()
 
- 
-# # read all lines at once
-# all_of_it = file.read()
- 
-# """
-# // tank
-# tank_diameter = 1000 * mm; 
-# tank_height   = 500 * mm; 
+        
 
-# // outlet
-# outlet_diameter = 100 * mm; 
-# outlet_height   = 200 * mm; 
-
-# // inlet 
-# inlet_diameter = 100 * mm;
-# inlet_height   = 200 * mm; 
-
-# //inlet-outlet-offset
-# offset  = 200 * mm; 
-# """
+    
