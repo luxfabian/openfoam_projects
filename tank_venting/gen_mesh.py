@@ -22,10 +22,10 @@ postfix_file.close()
 #---------------------------------------------------------------------
 
 def write_gmsh_file(
-                    tank_diameter=1000, tank_height=500, 
-                    outlet_diameter=100, outlet_height=200,
+                    tank_diameter=2000, tank_height=500, 
+                    outlet_diameter=200, outlet_height=200,
                     inlet_diameter=100, inlet_height=200, 
-                    offset=200
+                    offset=500
     ):
 
     gmesh_file = open("tank.geo", "w")

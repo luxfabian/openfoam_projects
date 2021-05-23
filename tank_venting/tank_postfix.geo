@@ -42,7 +42,10 @@ Physical Surface("outlet") = {7};
 // Create & save mesh
 //---------------------------------------------------------------------
 
+Mesh.MeshSizeFromCurvature = 20; //divions per 2*pi radians
+//Mesh.Smoothing = 200;
 Mesh 3;
-OptimizeMesh "Gmsh";
+OptimizeMesh "Netgen";
+
 Mesh.MshFileVersion = 2.0;
 Save "tank.msh";
